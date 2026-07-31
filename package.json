@@ -1,0 +1,13 @@
+{
+  "name": "streamvault-bot",
+  "private": true,
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.111.0",
+    "dotenv": "^17.4.2",
+    "node-telegram-bot-api": "^1.2.0"
+  }
+}
