@@ -1,6 +1,7 @@
-const { supabase } = require('../supabase');
-const { getSession, setSession, clearSession } = require('../session');
-const { formatPrice, formatOrderStatus, truncate } = require('../format');
+const { Bolt Database } = require('./supabase');
+const { getSession, setSession, clearSession } = require('./session');
+const { formatPrice, formatOrderStatus, truncate } = require('./format');
+
 const {
   mainMenuKeyboard,
   categoriesKeyboard,
