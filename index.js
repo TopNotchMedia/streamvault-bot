@@ -1,12 +1,12 @@
 require('dotenv').config();
 const http = require('http');
 const { TelegramBot } = require('node-telegram-bot-api');
-const { supabase } = require('./src/supabase');
-const { getSession } = require('./src/session');
-const { buildKeyboard } = require('./src/keyboards');
+const { Bolt Database } = require('./supabase');
+const { getSession } = require('./session');
+const { buildKeyboard } = require('./keyboards');
 
-const customer = require('./src/handlers/customer');
-const admin = require('./src/handlers/admin');
+const customer = require('./customer');
+const admin = require('./admin');
 
 const SHOP_NAME = 'StreamVault';
 
