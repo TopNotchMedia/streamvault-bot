@@ -10,7 +10,6 @@ const admin = require('./admin');
 
 const SHOP_NAME = 'StreamVault';
 
-// Keep-alive HTTP server so free hosting tiers don't sleep the process
 const PORT = process.env.PORT || 3000;
 http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -29,8 +28,6 @@ if (!token) {
 const bot = new TelegramBot(token, { polling: true });
 
 console.log(`${SHOP_NAME} bot is running...`);
-
-// ====== COMMANDS ======
 
 bot.setMyCommands([
   { command: 'start', description: 'Open the shop' },
@@ -69,8 +66,6 @@ bot.onText(/^\/admin$/, async (msg) => {
   await admin.sendAdminMenu(bot, msg.chat.id);
 });
 
-// ====== TEXT INPUT (checkout + admin flows) ======
-
 bot.on('message', async (msg) => {
   if (msg.text && msg.text.startsWith('/')) return;
 
@@ -89,15 +84,12 @@ bot.on('message', async (msg) => {
   }
 });
 
-// ====== CALLBACK QUERY ROUTER ======
-
 bot.on('callback_query', async (query) => {
   const data = query.data;
   const chatId = query.message.chat.id;
   const telegramId = query.from.id;
 
   try {
-    // ====== CUSTOMER ROUTES ======
     switch (data) {
       case 'main':
         await customer.sendMainMenu(bot, query.message);
@@ -143,7 +135,6 @@ bot.on('callback_query', async (query) => {
         return;
     }
 
-    // Prefix-based routes
     if (data.startsWith('cat:')) {
       await customer.handleCategory(bot, query);
       await bot.answerCallbackQuery(query.id);
@@ -173,7 +164,6 @@ bot.on('callback_query', async (query) => {
       return;
     }
 
-    // ====== ADMIN ROUTES ======
     if (data.startsWith('admin')) {
       const isAdm = await admin.isAdmin(telegramId);
       if (!isAdm) {
@@ -285,12 +275,9 @@ bot.on('callback_query', async (query) => {
   }
 });
 
-// Helper wrapper for add category start (keeps callback router clean)
 async function adminAddCategoryStartSafe(bot, query) {
   await admin.adminAddCategoryStart(bot, query);
 }
-
-// ====== ERROR HANDLING ======
 
 bot.on('polling_error', (err) => {
   console.error('Polling error:', err.message);
