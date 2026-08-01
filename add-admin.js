@@ -1,5 +1,6 @@
 require('dotenv').config();
-const { supabase } = require('../src/supabase');
+const { Bolt Database } = require('./supabase');
+
 
 async function main() {
   const telegramId = process.argv[2];
