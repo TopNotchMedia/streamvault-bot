@@ -1,7 +1,8 @@
-const { supabase } = require('../supabase');
-const { getSession, setSession, clearSession } = require('../session');
-const { formatPrice, formatOrderStatus, truncate } = require('../format');
-const { buildKeyboard, BACK_BUTTONS } = require('../keyboards');
+const { Bolt Database } = require('./supabase');
+const { getSession, setSession, clearSession } = require('./session');
+const { formatPrice, formatOrderStatus, truncate } = require('./format');
+const { buildKeyboard, BACK_BUTTONS } = require('./keyboards');
+
 
 const SHOP_NAME = 'StreamVault';
 
