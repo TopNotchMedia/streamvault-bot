@@ -11,7 +11,7 @@ const {
   checkoutConfirmKeyboard,
   ordersKeyboard,
   orderDetailKeyboard,
-} = require('../keyboards');
+} = require('./keyboards');
 
 const SHOP_NAME = 'StreamVault';
 
