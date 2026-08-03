@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Bolt Database } = require('./supabase');
+const { supabase } = require('./supabase');
 
 
 async function main() {
