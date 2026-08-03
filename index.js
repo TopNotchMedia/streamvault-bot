@@ -14,7 +14,7 @@ console.log('ENV check — BOT_TOKEN:', process.env.TELEGRAM_BOT_TOKEN ? 'SET' :
 
 const http = require('http');
 const { TelegramBot } = require('node-telegram-bot-api');
-const { Bolt Database } = require('./supabase');
+const { bolt database } = require('./supabase');
 const { getSession } = require('./session');
 const { buildKeyboard } = require('./keyboards');
 
